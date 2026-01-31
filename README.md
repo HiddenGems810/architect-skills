@@ -34,6 +34,11 @@ This repository contains utilizing specialized "Brain" skills for your AI agent,
 *   **Focus**: OWASP Top 10, Zero-Mess-Up Linting, Security Headers.
 *   **Use when**: Auditing code, setting up auth, configuring CI/CD pipelines.
 
+### 7. [consult_reliability_engineering](./reliability_engineering/SKILL.md)
+**"The SRE"**
+*   **Focus**: SLOs, Chaos Engineering, Incident Response.
+*   **Use when**: Planning for high traffic, setting up monitoring, or debugging outages.
+
 ## Installation / Bootstrap
 
 To instantly equip your agent with **ALL** these skills in any project, use the included bootstrap workflow.
