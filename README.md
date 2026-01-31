@@ -46,7 +46,7 @@ To instantly equip your agent with **ALL** these skills in any project, use the 
 ### Option A: Manual Install
 Run this command in your project root:
 ```bash
-git submodule add https://github.com/HighTech10/architect-skills .agent/skills/architect-skills
+git submodule add https://github.com/HiddenGems810/architect-skills .agent/skills/architect-skills
 ```
 
 ### Option B: Workflow Install

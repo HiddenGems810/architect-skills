@@ -3,7 +3,7 @@ description: Install a skill from a GitHub URL. Usage: /install_skill <url>
 ---
 
 1.  Parse the input URL
-    The user will provide a GitHub URL (e.g., https://github.com/HighTech10/architect-skills).
+    The user will provide a GitHub URL (e.g., https://github.com/HiddenGems810/architect-skills).
     Extract the repository name from the URL.
 
 2.  Create the skills directory if it doesn't exist
