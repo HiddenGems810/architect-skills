@@ -1,6 +1,15 @@
 # Architect Skills Repository
 
-This repository contains utilizing specialized "Brain" skills for your AI agent, transforming it from a general coder into a "Startup in a Box" engineering and product team.
+This repository contains specialized "Brain" skills for your AI agent, transforming it from a general coder into a "Startup in a Box" engineering and product team.
+
+## 🧠 Auto-Pilot Philosophy
+**You do not need to prompt "Act as a CTO..."**
+Once installed, these skills become part of the agent's latent knowledge.
+- Ask about **pricing**, and the agent uses the `product_strategy` skill.
+- Ask about **bugs**, and it uses `reliability_engineering`.
+- Ask about **databases**, and it uses `system_architecture`.
+
+Just do the work. The agent adapts.
 
 ## The "Million Dollar" Stack
 

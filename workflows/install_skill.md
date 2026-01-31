@@ -19,4 +19,4 @@ description: Install a skill from a GitHub URL. Usage: /install_skill <url>
     git clone ${input_url} .agent/skills/${repo_name}
 
 5.  Notify User
-    "Successfully installed skill: ${repo_name}. You can now use the skills defined in that repository."
+    "Architect Brain Online. 🧠\n\nI have absorbed the skills for:\n- Security (CISO)\n- Scale (CTO)\n- Growth (Head of Growth)\n- Product (CPO)\n- Research (PhD)\n\nYou don't need to tell me who to be. Just describe the problem, and I will automatically apply the right expert perspective."

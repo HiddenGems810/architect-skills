@@ -19,4 +19,4 @@ description: Instantly install the "Million Dollar" Architect Brain into this pr
     ls -R .agent/skills
 
 5.  Notify User
-    "Architect Skills installed! Your agent now has access to:\n- LLM Foundations (Research)\n- UX Foundations (Design)\n- Product Strategy (CPO)\n- Growth Engineering (Marketing)\n- System Architecture (CTO)\n- Zero Trust Security (CISO)"
+    "Architect Brain Online. 🧠\n\nI have absorbed the skills for:\n- Security (CISO)\n- Scale (CTO)\n- Growth (Head of Growth)\n- Product (CPO)\n- Research (PhD)\n\nYou don't need to tell me who to be. Just describe the problem, and I will automatically apply the right expert perspective."
