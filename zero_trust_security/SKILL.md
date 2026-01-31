@@ -1,61 +1,63 @@
 ---
 name: consult_zero_trust_security
-description: Enforce bank-grade security, strict linting, and zero-mess-up audits.
+description: Foundational security theory, Zero Trust architecture, and rigorous quality assurance.
 ---
 
-# Zero Trust Security & Quality Audits
+# Zero Trust Security & Information Assurance
 
-You are the CISO (Chief Information Security Officer). Your job is to ensure zero vulnerabilities and flawless code quality. **Trust nothing. Verify everything.**
+You have access to the seminal papers and standards that define modern information security. Use these first principles to design unshakeable systems.
 
-## 1. The "Zero Mess Up" Linting Standard
+## 1. Foundational Theory
 
-### TypeScript / JavaScript
-*   **Rule**: `no-explicit-any`.
-    *   *Why*: `any` defeats the purpose of TypeScript. Use `unknown` or define a generic.
-*   **Rule**: `react-hooks/exhaustive-deps`.
-    *   *Why*: Missing dependencies causes stale closures and hard-to-debug UI bugs.
-*   **Rule**: No `console.log` in production.
-    *   *Why*: Security risk (leaking tokens) and performance hit. Use a proper logger (Pino, Winston).
+### The Protection of Information in Computer Systems (Saltzer & Schroeder, 1975)
+*   **Core Contribution**: The 8 Design Principles of Security.
+*   **Key Insight**: Security is not a feature; it is an architectural property.
+    *   **Least Privilege**: Every program/user should operate using the minimum set of privileges necessary to complete the job.
+    *   **Fail-Safe Defaults**: Access decisions should be based on permission rather than exclusion. (Default Deny).
+    *   **Economy of Mechanism**: Keep the design as simple and small as possible. Complexity is the enemy of security.
 
-### Dependency Auditing
-*   **Command**: `npm audit` (or `pnpm audit`).
-*   **Policy**: Zero Critical/High vulnerabilities allowed.
-*   **Lockfiles**: `package-lock.json` must always be committed. CI must run `npm ci`, not `npm install`.
+### Reflections on Trusting Trust (Ken Thompson, 1984)
+*   **Core Contribution**: Supply Chain Security.
+*   **Key Insight**: You cannot trust code just because you reviewed the source. If the compiler (or build tool) is compromised, it can insert invisible backdoors.
+*   **Modern Application**: This is why we use **Lockfiles** (`package-lock.json`), **Dependency Pinning**, and **Signed Commits**. Trust no artifact you didn't build yourself.
 
-## 2. OWASP Top 10 Mitigation
+### Bell-LaPadula vs. Biba Models (1973/1977)
+*   **Bell-LaPadula**: Focuses on **Confidentiality**. "No Read Up, No Write Down". (Prevents leaking secrets).
+*   **Biba Model**: Focuses on **Integrity**. "No Read Down, No Write Up". (Prevents corrupting high-trust data with low-trust inputs).
+*   **Application**: Distinguish whether your system protects *secrets* (Medical DB) or *truth* (Financial Ledger).
 
-### A01: Broken Access Control
-*   **Fix**: Deny by default. Every API route must check `session.user.id`.
-*   **Pattern**: Use middleware matchers to protect entire `/dashboard/*` routes.
+## 2. Zero Trust Architecture
 
-### A03: Injection (SQL / Command)
-*   **Fix**: NEVER concatenate strings for DB queries.
-    *   *Bad*: `db.query("SELECT * FROM users WHERE id = " + id)`
-    *   *Good*: `db.query("SELECT * FROM users WHERE id = ?", [id])` (Parameterized queries).
-*   **ORM**: Use Prisma, Drizzle, or TypeORM which handle parameterization automatically.
+### NIST SP 800-207 (Zero Trust Architecture)
+*   **Definition**: "Never trust, always verify."
+*   **Core Principle**: Access is determined primarily by policy, including the state of the user and device, not solely by network location.
+*   **Tenet**: All communication is secured regardless of network location. The internal network is considered hostile.
 
-### A07: Identification and Authentication Failures
-*   **Fix**: Don't roll your own auth. Use **Auth.js (NextAuth)**, **Clerk**, or **Supabase Auth**.
-*   **Session**: Use HTTP-only, Secure, SameSite cookies.
+### BeyondCorp (Google, 2014)
+*   **Core Contribution**: The death of the VPN.
+*   **Key Insight**: Perimeter security is dead. Move access controls to the application layer.
+*   **Implementation**: Identify the User + Identify the Device + Context-Aware Proxy = Access Granted.
 
-## 3. Security Headers (The "Invisible Wall")
+## 3. Practical Implementation (The "Zero Mess Up" Standard)
 
-Every response must headers:
-*   `Content-Security-Policy` (CSP): Prevent XSS by restricting where scripts load from.
-*   `X-Frame-Options: DENY`: Prevent Clickjacking.
-*   `Strict-Transport-Security` (HSTS): Enforce HTTPS.
-*   `Referrer-Policy: strict-origin-when-cross-origin`: Protect user privacy.
+### The "Default Deny" Codebase
+*   **Principle**: [Saltzer & Schroeder] Fail-Safe Defaults.
+*   **Audit**: Every API route must explicitly define who *can* access it. If no header is present, return 401.
 
-## 4. Secret Management
+### Supply Chain Hardening
+*   **Principle**: [Thompson] Trusting Trust.
+*   **Action**:
+    *   Run `npm audit` in CI. Fail on High/Critical.
+    *   Use `npm ci` (Clean Install) to ensure exact lockfile usage.
+    *   Scan for "Typosquatting" packages.
 
-*   **Rule**: `.env` files are for local development ONLY.
-*   **Rule**: NEVER commit `.env` to Git. Add it to `.gitignore` immediately.
-*   **Detection**: Use tools like `git-secrets` or pre-commit hooks to scan for keys starting with `sk_live`, `ghp_`, etc.
+### Input Hygiene (Biba Integrity)
+*   **Principle**: Low-integrity inputs (User) must not corrupt High-integrity state (Database).
+*   **Action**:
+    *   **OWASP A03 (Injection)**: Use Parameterized Queries (Prisma/TypeORM) exclusively.
+    *   **Validation**: Parse EVERYTHING with Zod/Yup schemas at the boundary. `matches(schema)` is the only way to trust data.
 
-## 5. The "Pre-Flight" Check (Before Deployment)
-
-Before saying "I'm done", execute this checklist:
-1.  [ ] Are all inputs validated? (Zod/Yup schemas for every API endpoint).
-2.  [ ] Are all database writes authorized? (Row Level Security or policy checks).
-3.  [ ] Are there any secret keys hardcoded? (Check usage of `process.env`).
-4.  [ ] Did the build pass with ZERO lint warnings? (`eslint --max-warnings=0`).
+### Linting & Static Analysis
+*   **Rule**: `no-explicit-any`. (Types are the contract).
+*   **Rule**: `react-hooks/exhaustive-deps`. (Correctness).
+*   **Rule**: No `console.log` (Information Leakage).
