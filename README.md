@@ -29,9 +29,21 @@ This repository contains utilizing specialized "Brain" skills for your AI agent,
 *   **Focus**: Scalability, Database Choice, Security, Cloud Infra.
 *   **Use when**: Setting up backends, choosing databases, planning for scale.
 
-## Installation
+### 6. [consult_zero_trust_security](./zero_trust_security/SKILL.md)
+**"The CISO"**
+*   **Focus**: OWASP Top 10, Zero-Mess-Up Linting, Security Headers.
+*   **Use when**: Auditing code, setting up auth, configuring CI/CD pipelines.
 
-To equip your agent with these skills:
+## Installation / Bootstrap
 
-1.  Copy the desired `SKILL.md` file (or the whole folder) into your agent's skill directory (e.g., `.agent/skills/`).
-2.  The agent will auto-detect the skill and use it to answer relevant queries.
+To instantly equip your agent with **ALL** these skills in any project, use the included bootstrap workflow.
+
+### Option A: Manual Install
+Run this command in your project root:
+```bash
+git submodule add https://github.com/HighTech10/architect-skills .agent/skills/architect-skills
+```
+
+### Option B: Workflow Install
+Copy `workflows/bootstrap.md` to your global workflows and run:
+`/bootstrap`
